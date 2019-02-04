@@ -1,0 +1,17 @@
+pip install selenium --user
+curl https://intoli.com/install-google-chrome.sh | bash
+curl -SL https://chromedriver.storage.googleapis.com/2.42/chromedriver_linux64.zip > chromedriver.zip
+unzip chromedriver.zip
+
+
+
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
+options = Options()
+options.add_argument('--headless')
+driver = webdriver.Chrome('/home/ec2-user/environment/chromedriver', chrome_options=options)
+
+driver.get('https://www.google.co.jp/search?q=chrome')
+driver.save_screenshot('screenshot.png')
+driver.quit()
